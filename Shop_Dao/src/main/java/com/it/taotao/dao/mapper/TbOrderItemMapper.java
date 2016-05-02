@@ -1,4 +1,4 @@
-package com.it.taotao.mapper;
+package com.it.taotao.dao.mapper;
 
 import com.it.taotao.pojo.TbOrderItem;
 import com.it.taotao.pojo.TbOrderItemExample;
