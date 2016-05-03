@@ -5,16 +5,18 @@ import com.it.taotao.dao.mapper.TbContentMapper;
 import com.it.taotao.pojo.TbContent;
 import com.it.taotao.pojo.TbContentExample;
 import com.it.train.util.CollectionUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * Created by 55 on 5/3/2016.
  */
+@Repository
 public class TbContentDaoImpl implements TbContentDao {
 
-    @Resource
+    @Autowired
     TbContentMapper tbContentMapper;
 
 

@@ -20,5 +20,12 @@
     </modules>
     <packaging>pom</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.it.train.shop</groupId>
+            <version>1.0-SNAPSHOT</version>
+            <artifactId>Shop_Common</artifactId>
+        </dependency>
 
+    </dependencies>
 </project>
