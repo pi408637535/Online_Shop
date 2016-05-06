@@ -43,9 +43,54 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+
+
     </dependencies>
 
+
+
     <build>
-        <finalName>Shop_Web</finalName>
+        <finalName>Shop-${version}-${active.profile.id}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <active.profile.id>dev</active.profile.id>
+                <profileName>dev</profileName>
+                <db.driver>com.mysql.jdbc.Driver</db.driver>
+                <db.url>jdbc:mysql://localhost:3306/taotao?characterEncoding=utf-8</db.url>
+                <db.username>root</db.username>
+                <db.password>root</db.password>
+                <logback.appender>STDOUT</logback.appender>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <active.profile.id>prod</active.profile.id>
+                <profileName>prod</profileName>
+                <logback.appender>SEARCH_API_ASYNC</logback.appender>
+              </properties>
+        </profile>
+    </profiles>
 </project>

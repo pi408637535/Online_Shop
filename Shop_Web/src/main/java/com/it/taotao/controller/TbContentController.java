@@ -21,6 +21,6 @@ public class TbContentController {
     @RequestMapping("/findContent")
     @ResponseBody
     public TbContent findTbContentById(){
-        return tbContentService.findTbContentById(1l);
+        return tbContentService.findTbContentById(28l);
     }
 }

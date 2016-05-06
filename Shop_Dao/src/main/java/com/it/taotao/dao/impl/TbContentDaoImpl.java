@@ -5,6 +5,8 @@ import com.it.taotao.dao.mapper.TbContentMapper;
 import com.it.taotao.pojo.TbContent;
 import com.it.taotao.pojo.TbContentExample;
 import com.it.train.util.CollectionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,12 +18,30 @@ import java.util.List;
 @Repository
 public class TbContentDaoImpl implements TbContentDao {
 
+    private static final Logger logger = LoggerFactory.getLogger(TbContentDaoImpl.class);
+
     @Autowired
-    TbContentMapper tbContentMapper;
+    private TbContentMapper tbContentMapper;
 
 
     @Override
     public TbContent findContentById(Long id) {
+/*
+        try{
+            TbContentExample tbContentExample = new TbContentExample();
+            TbContentExample.Criteria criteria = tbContentExample.createCriteria();
+            criteria.andIdEqualTo(id);
+            List<TbContent> listContent = tbContentMapper.selectByExample(tbContentExample);
+            if(!CollectionUtil.isEmpty(listContent)){
+                return listContent.get(0);
+            }else{
+                return null;
+            }
+        }catch(Exception e){
+            logger.error("TbContentDaoImpl findContentById", e);
+        }finally {
+            return null;
+        }*/
         TbContentExample tbContentExample = new TbContentExample();
         TbContentExample.Criteria criteria = tbContentExample.createCriteria();
         criteria.andIdEqualTo(id);
@@ -31,6 +51,5 @@ public class TbContentDaoImpl implements TbContentDao {
         }else{
             return null;
         }
-
     }
 }
