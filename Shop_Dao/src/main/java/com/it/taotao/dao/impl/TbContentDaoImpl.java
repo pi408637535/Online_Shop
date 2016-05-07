@@ -26,7 +26,6 @@ public class TbContentDaoImpl implements TbContentDao {
 
     @Override
     public TbContent findContentById(Long id) {
-/*
         try{
             TbContentExample tbContentExample = new TbContentExample();
             TbContentExample.Criteria criteria = tbContentExample.createCriteria();
@@ -40,8 +39,10 @@ public class TbContentDaoImpl implements TbContentDao {
         }catch(Exception e){
             logger.error("TbContentDaoImpl findContentById", e);
         }finally {
-            return null;
-        }*/
+            logger.info("TbContentDaoImpl findContentById");
+        }
+        return  null;
+        /*
         TbContentExample tbContentExample = new TbContentExample();
         TbContentExample.Criteria criteria = tbContentExample.createCriteria();
         criteria.andIdEqualTo(id);
@@ -50,6 +51,6 @@ public class TbContentDaoImpl implements TbContentDao {
             return listContent.get(0);
         }else{
             return null;
-        }
+        }*/
     }
 }
