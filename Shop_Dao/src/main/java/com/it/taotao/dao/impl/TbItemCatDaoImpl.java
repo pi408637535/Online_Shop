@@ -21,10 +21,11 @@ public class TbItemCatDaoImpl implements TbItemCatDao {
     private TbItemCatMapper tbItemCatMapper;
 
     @Override
-    public List<TbItemCat> getItemCatList() {
+    public List<TbItemCat> getItemCategoryList(Long parentId) {
         TbItemCatExample tbItemCatExample = new TbItemCatExample();
-        TbItemCatExample.Criteria criteria = tbItemCatExample.createCriteria();
-        List<TbItemCat> list = tbItemCatMapper.selectByExample(tbItemCatExample);
-        return list;
+        TbItemCatExample.Criteria criteria =  tbItemCatExample.createCriteria();
+        criteria.andParentIdEqualTo(parentId);
+        List<TbItemCat> itemCatList=  tbItemCatMapper.selectByExample(tbItemCatExample);
+        return itemCatList;
     }
 }
