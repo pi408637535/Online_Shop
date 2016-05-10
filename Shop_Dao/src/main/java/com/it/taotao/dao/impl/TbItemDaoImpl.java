@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,5 +37,10 @@ public class TbItemDaoImpl implements TbItemDao {
             logger.info("TbItemDao getItemList");
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    public int saveTbItem(TbItem tbItem) {
+        return  tbItemMapper.insert(tbItem);
     }
 }
