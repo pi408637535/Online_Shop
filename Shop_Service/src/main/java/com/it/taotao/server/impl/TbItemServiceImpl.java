@@ -3,7 +3,9 @@ package com.it.taotao.server.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.it.taotao.dao.TbItemDao;
+import com.it.taotao.dao.TbItemDescDao;
 import com.it.taotao.pojo.TbItem;
+import com.it.taotao.pojo.TbItemDesc;
 import com.it.taotao.server.TbItemService;
 import com.it.train.po.EasyUIResult;
 import com.it.train.po.TaotaoResult;
@@ -22,6 +24,8 @@ public class TbItemServiceImpl implements TbItemService {
 
     @Autowired
     TbItemDao tbItemDao;
+    @Autowired
+    TbItemDescDao tbItemDescDao;
 
     /** Mybatis PageHelper分页插件使用方法
      * 使用方法：
@@ -44,19 +48,32 @@ public class TbItemServiceImpl implements TbItemService {
     }
 
     @Override
-    public TaotaoResult saveItem(TbItem tbItem) {
+    public TaotaoResult saveItem(TbItem tbItem, String desc) {
         TaotaoResult taotaoResult = new TaotaoResult();
 
         Date date = new Date();
-        tbItem.setId(IDUtils.genItemId());
+        long itemId = IDUtils.genItemId();
+        tbItem.setId(itemId);
         tbItem.setCreated(date);
         tbItem.setUpdated(date);
         tbItem.setStatus((byte) 1);
-        int result = tbItemDao.saveTbItem(tbItem);
-        if(result != 1){
-           return  TaotaoResult.build(400,"create Item error！");
+        int tbItemResult = tbItemDao.saveTbItem(tbItem);
+
+        TbItemDesc  tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(itemId);
+        tbItemDesc.setUpdated(date);
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setItemDesc(desc);
+
+        int tbItemDescResult = tbItemDescDao.insertTbItemDesc(tbItemDesc);
+
+        if(tbItemResult != 1 && tbItemDescResult != 1){
+            return  TaotaoResult.build(400,"create Item error！");
         }else{
             return TaotaoResult.ok();
         }
+
+
     }
+
 }
