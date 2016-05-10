@@ -6,9 +6,12 @@ import com.it.taotao.dao.TbItemDao;
 import com.it.taotao.pojo.TbItem;
 import com.it.taotao.server.TbItemService;
 import com.it.train.po.EasyUIResult;
+import com.it.train.po.TaotaoResult;
+import com.it.train.util.IDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,5 +41,22 @@ public class TbItemServiceImpl implements TbItemService {
         //返回处理结果
         EasyUIResult result = new EasyUIResult(pageInfo.getTotal(), listTbItem);
         return result;
+    }
+
+    @Override
+    public TaotaoResult saveItem(TbItem tbItem) {
+        TaotaoResult taotaoResult = new TaotaoResult();
+
+        Date date = new Date();
+        tbItem.setId(IDUtils.genItemId());
+        tbItem.setCreated(date);
+        tbItem.setUpdated(date);
+        tbItem.setStatus((byte) 1);
+        int result = tbItemDao.saveTbItem(tbItem);
+        if(result != 1){
+           return  TaotaoResult.build(400,"create Item error！");
+        }else{
+            return TaotaoResult.ok();
+        }
     }
 }
