@@ -1,7 +1,9 @@
 package com.it.taotao.controller;
 
+import com.it.taotao.pojo.TbItem;
 import com.it.taotao.server.TbItemService;
 import com.it.train.po.EasyUIResult;
+import com.it.train.po.TaotaoResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,5 +24,11 @@ public class TbItemController {
     @ResponseBody
     public EasyUIResult getItemList(int page, int rows){
         return  tbItemService.getItemList(page,rows);
+    }
+
+    @RequestMapping("/save")
+    @ResponseBody
+    public TaotaoResult saveItem(TbItem tbItem) {
+        return tbItemService.saveItem(tbItem);
     }
 }
