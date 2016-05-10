@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface TbItemDao {
     public List<TbItem> getItemList();
+    public int saveTbItem(TbItem tbItem);
 }
