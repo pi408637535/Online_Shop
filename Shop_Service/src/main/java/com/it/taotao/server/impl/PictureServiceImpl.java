@@ -20,6 +20,20 @@ public class PictureServiceImpl implements PictureService {
     @Autowired
     private FastDFSClient fastDFSClient;
 
+    /**
+     *
+     * 图片上传 要求返回json格式
+     * 成功时
+     {
+     "error" : 0,
+     "url" : "http://www.example.com/path/to/file.ext"
+     }
+     失败时
+     {
+     "error" : 1,
+     "message" : "错误信息"
+     }
+     * */
     @Override
     public PictureResult  uploadPicure(MultipartFile picFile){
         PictureResult result = new PictureResult();
