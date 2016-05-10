@@ -1,12 +1,8 @@
 package com.it.taotao.server.impl;
 
 import com.it.taotao.dao.TbItemCatDao;
-import com.it.taotao.dao.TbItemDao;
-import com.it.taotao.pojo.TbContent;
 import com.it.taotao.pojo.TbItemCat;
-import com.it.taotao.server.TbContentService;
 import com.it.taotao.server.TbItemCatService;
-import com.sun.deploy.util.ArrayUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
