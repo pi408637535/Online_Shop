@@ -4,8 +4,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.it.taotao.dao.TbItemDao;
 import com.it.taotao.dao.TbItemDescDao;
+import com.it.taotao.dao.TbItemParamItemDao;
 import com.it.taotao.pojo.TbItem;
 import com.it.taotao.pojo.TbItemDesc;
+import com.it.taotao.pojo.TbItemParamItem;
 import com.it.taotao.server.TbItemService;
 import com.it.train.po.EasyUIResult;
 import com.it.train.po.TaotaoResult;
@@ -26,6 +28,8 @@ public class TbItemServiceImpl implements TbItemService {
     TbItemDao tbItemDao;
     @Autowired
     TbItemDescDao tbItemDescDao;
+    @Autowired
+    TbItemParamItemDao tbItemParamItemDao;
 
     /** Mybatis PageHelper分页插件使用方法
      * 使用方法：
@@ -48,7 +52,7 @@ public class TbItemServiceImpl implements TbItemService {
     }
 
     @Override
-    public TaotaoResult saveItem(TbItem tbItem, String desc) {
+    public TaotaoResult saveItem(TbItem tbItem, String desc, String itemParamss) {
         TaotaoResult taotaoResult = new TaotaoResult();
 
         Date date = new Date();
@@ -67,7 +71,15 @@ public class TbItemServiceImpl implements TbItemService {
 
         int tbItemDescResult = tbItemDescDao.insertTbItemDesc(tbItemDesc);
 
-        if(tbItemResult != 1 && tbItemDescResult != 1){
+        //主要用于在添加商品时，保存商品规格参数用。
+        TbItemParamItem tbItemParamItem = new TbItemParamItem();
+        tbItemParamItem.setItemId(itemId);
+        tbItemParamItem.setParamData(itemParamss);
+        tbItemParamItem.setCreated(date);
+        tbItemParamItem.setUpdated(date);
+        int tbItemParamItemResult = tbItemParamItemDao.saveTbItemParamItem(tbItemParamItem);
+
+        if(tbItemResult != 1 && tbItemDescResult != 1  && tbItemParamItemResult != 1){
             return  TaotaoResult.build(400,"create Item error！");
         }else{
             return TaotaoResult.ok();

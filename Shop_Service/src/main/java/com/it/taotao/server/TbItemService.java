@@ -9,5 +9,5 @@ import com.it.train.po.TaotaoResult;
  */
 public interface TbItemService {
     public EasyUIResult getItemList(int page, int rows);
-    public TaotaoResult saveItem(TbItem tbItem, String desc);
+    public TaotaoResult saveItem(TbItem tbItem, String desc, String itemParams);
 }
