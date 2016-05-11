@@ -38,7 +38,7 @@ public class PictureServiceImpl implements PictureService {
     public PictureResult  uploadPicure(MultipartFile picFile){
         PictureResult result = new PictureResult();
         if(picFile.isEmpty()){
-            result.setError(-1);
+            result.setError(1);
             result.setMessage("Picture is Empty");
         }else{
             String originalFilename = picFile.getOriginalFilename();
