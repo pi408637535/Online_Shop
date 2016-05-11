@@ -29,7 +29,12 @@ public class TbItemParamController {
     @RequestMapping("/list")
     @ResponseBody
     public EasyUIResult getItemParamList(int page, int rows){
-        return tbItemParamService.getItemParamList(page,rows);
+        return tbItemParamService.getItemParamList(page, rows);
     }
 
+    @RequestMapping("/save/{cid}")
+    @ResponseBody
+    public TaotaoResult saveItemParam(@PathVariable Long cid, String paramData){
+        return tbItemParamService.saveTbItemParam(cid, paramData);
+    }
 }
