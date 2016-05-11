@@ -10,6 +10,7 @@ import com.it.train.po.TaotaoResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,6 +46,22 @@ public class TbItemParamServiceImpl implements TbItemParamService {
         //返回处理结果
         EasyUIResult result = new EasyUIResult(pageInfo.getTotal(), listTbItemParam);
         return result;
+    }
+
+    @Override
+    public TaotaoResult saveTbItemParam(Long itemCatId, String paramData) {
+        TbItemParam tbItemParam = new TbItemParam();
+        Date date = new Date();
+        tbItemParam.setItemCatId(itemCatId);
+        tbItemParam.setParamData(paramData);
+        tbItemParam.setCreated(date);
+        tbItemParam.setUpdated(date);
+        int result = tbItemParamDao.saveTbItemParam(tbItemParam);
+        if(result != 1){
+            return TaotaoResult.build(500, "save tbItemParam error");
+        }else{
+            return TaotaoResult.ok();
+        }
     }
 
 

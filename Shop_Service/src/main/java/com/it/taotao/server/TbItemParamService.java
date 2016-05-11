@@ -9,4 +9,5 @@ import com.it.train.po.TaotaoResult;
 public interface TbItemParamService {
     public TaotaoResult getTbItemParamByItemCatId(Long itemCatId);
     public EasyUIResult getItemParamList(int page, int rows);
+    public TaotaoResult saveTbItemParam(Long itemCatId, String paramData);
 }
