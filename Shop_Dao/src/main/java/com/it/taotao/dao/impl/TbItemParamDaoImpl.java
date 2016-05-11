@@ -39,4 +39,9 @@ public class TbItemParamDaoImpl implements TbItemParamDao {
         TbItemParamExample tbItemParamExample = new TbItemParamExample();
         return tbItemParamMapper.selectByExampleWithBLOBs(tbItemParamExample);
     }
+
+    @Override
+    public int saveTbItemParam(TbItemParam tbItemParam) {
+        return tbItemParamMapper.insert(tbItemParam);
+    }
 }

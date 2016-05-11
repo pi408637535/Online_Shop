@@ -10,4 +10,5 @@ import java.util.List;
 public interface TbItemParamDao {
     public TbItemParam getTbItemDescByItemCatId(Long itemCatId);
     public List<TbItemParam> getItemParamList();
+    public int saveTbItemParam(TbItemParam tbItemParam);
 }
