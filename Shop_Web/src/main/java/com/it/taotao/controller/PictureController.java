@@ -20,9 +20,10 @@ public class PictureController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public String uploadFile(MultipartFile uploadFile) {
+    public PictureResult uploadFile(MultipartFile uploadFile) {
         PictureResult result = pictureService.uploadPicure(uploadFile);
-        return JSONUtils.toJSONString(result);
+        return  result;
+    //    return JSONUtils.toJSONString(result);
     }
 
 }
