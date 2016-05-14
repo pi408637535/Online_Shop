@@ -9,4 +9,7 @@ import java.util.List;
  */
 public interface TbContentCategoryDao {
     public List<TbContentCategory> getContentCategoryList(Long id);
+    public int saveContentCategory(TbContentCategory tbContentCategory);
+    public int updateContentCategory(TbContentCategory tbContentCategory);
+    public TbContentCategory getTbContentCategoryById(Long id);
 }

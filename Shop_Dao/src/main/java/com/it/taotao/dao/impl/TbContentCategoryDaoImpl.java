@@ -34,4 +34,23 @@ public class TbContentCategoryDaoImpl implements TbContentCategoryDao {
             return list;
         }
     }
+
+    @Override
+    public int saveContentCategory(TbContentCategory tbContentCategory) {
+        /**
+         *  返回插入值的主键ID
+         * */
+        int id = tbContentCategoryMapper.insert(tbContentCategory);
+        return id;
+    }
+
+    @Override
+    public int updateContentCategory(TbContentCategory tbContentCategory) {
+        return tbContentCategoryMapper.updateByPrimaryKey(tbContentCategory);
+    }
+
+    @Override
+    public TbContentCategory getTbContentCategoryById(Long id) {
+        return tbContentCategoryMapper.selectByPrimaryKey(id);
+    }
 }
