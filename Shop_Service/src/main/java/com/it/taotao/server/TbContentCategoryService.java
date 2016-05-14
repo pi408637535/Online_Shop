@@ -1,6 +1,7 @@
 package com.it.taotao.server;
 
 import com.it.train.po.EasyUITreeNode;
+import com.it.train.po.TaotaoResult;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -10,4 +11,5 @@ import java.util.List;
  */
 public interface TbContentCategoryService {
     public List<EasyUITreeNode> getEasyUITreeNode(Long pid);
+    public TaotaoResult createEasyUITreeNode(Long parentId, String name);
 }
