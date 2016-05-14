@@ -53,4 +53,13 @@ public class TbContentCategoryDaoImpl implements TbContentCategoryDao {
     public TbContentCategory getTbContentCategoryById(Long id) {
         return tbContentCategoryMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public List<TbContentCategory> getContentCategoryListByCategoryId(Long categoryId) {
+        TbContentCategoryExample tbContentCategoryExample = new TbContentCategoryExample();
+        TbContentCategoryExample.Criteria criteria = tbContentCategoryExample.createCriteria();
+        criteria.andParentIdEqualTo(categoryId);
+
+        return  tbContentCategoryMapper.selectByExample(tbContentCategoryExample);
+    }
 }

@@ -53,4 +53,12 @@ public class TbContentDaoImpl implements TbContentDao {
             return null;
         }*/
     }
+
+    @Override
+    public List<TbContent> getTbContentList(Long categoryId) {
+        TbContentExample tbContentExample = new TbContentExample();
+        TbContentExample.Criteria criteria = tbContentExample.createCriteria();
+        criteria.andCategoryIdEqualTo(categoryId);
+        return tbContentMapper.selectByExample(tbContentExample);
+    }
 }

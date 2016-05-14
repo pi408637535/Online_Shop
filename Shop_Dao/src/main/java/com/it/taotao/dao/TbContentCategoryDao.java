@@ -12,4 +12,5 @@ public interface TbContentCategoryDao {
     public int saveContentCategory(TbContentCategory tbContentCategory);
     public int updateContentCategory(TbContentCategory tbContentCategory);
     public TbContentCategory getTbContentCategoryById(Long id);
+    public List<TbContentCategory> getContentCategoryListByCategoryId(Long categoryId);
 }
