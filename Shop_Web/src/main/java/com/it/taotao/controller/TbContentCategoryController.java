@@ -2,6 +2,7 @@ package com.it.taotao.controller;
 
 import com.it.taotao.server.TbContentCategoryService;
 import com.it.train.po.EasyUITreeNode;
+import com.it.train.po.TaotaoResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,4 +26,11 @@ public class TbContentCategoryController {
     public List<EasyUITreeNode> getEasyUITreeNode(@RequestParam(value="id", defaultValue = "0")Long pid){
        return tbContentCategoryService.getEasyUITreeNode(pid);
     }
+
+    @RequestMapping("/create")
+    @ResponseBody
+    public TaotaoResult createEasyUITreeNode(Long parentId, String name){
+       return tbContentCategoryService.createEasyUITreeNode(parentId, name);
+    }
+
 }

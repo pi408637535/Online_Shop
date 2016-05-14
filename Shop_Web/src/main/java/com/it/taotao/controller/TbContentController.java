@@ -1,7 +1,9 @@
 package com.it.taotao.controller;
 
 import com.it.taotao.pojo.TbContent;
+import com.it.taotao.server.TbContentServer;
 import com.it.taotao.server.TbContentService;
+import com.it.train.po.EasyUIResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,11 +18,12 @@ import javax.annotation.Resource;
 @RequestMapping("/content")
 public class TbContentController {
     @Resource
-    private TbContentService tbContentService;
+    private TbContentServer tbContentService;
 
-    @RequestMapping("/findContent")
+    @RequestMapping("/query/list")
     @ResponseBody
-    public TbContent findTbContentById(){
-        return tbContentService.findTbContentById(28l);
+    public EasyUIResult getContentList(Long categoryId,int page, int rows){
+        return  tbContentService.getTbContentList(categoryId, page, rows);
     }
+
 }
