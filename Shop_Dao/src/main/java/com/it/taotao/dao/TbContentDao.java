@@ -10,6 +10,7 @@ import java.util.List;
 public interface TbContentDao {
     public TbContent findContentById(Long id);
     public List<TbContent> getTbContentList(Long categoryId);
+    public int saveContent(TbContent tbContent);
 }
 
 

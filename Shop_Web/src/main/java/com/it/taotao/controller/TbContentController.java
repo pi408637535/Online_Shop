@@ -2,8 +2,8 @@ package com.it.taotao.controller;
 
 import com.it.taotao.pojo.TbContent;
 import com.it.taotao.server.TbContentServer;
-import com.it.taotao.server.TbContentService;
 import com.it.train.po.EasyUIResult;
+import com.it.train.po.TaotaoResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +24,12 @@ public class TbContentController {
     @ResponseBody
     public EasyUIResult getContentList(Long categoryId,int page, int rows){
         return  tbContentService.getTbContentList(categoryId, page, rows);
+    }
+
+    @RequestMapping("/save")
+    @ResponseBody
+    public TaotaoResult saveContent(TbContent tbContent){
+        return  tbContentService.saveTbContent(tbContent);
     }
 
 }

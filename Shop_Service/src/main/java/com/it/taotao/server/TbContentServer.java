@@ -1,5 +1,6 @@
 package com.it.taotao.server;
 
+import com.it.taotao.pojo.TbContent;
 import com.it.train.po.EasyUIResult;
 import com.it.train.po.TaotaoResult;
 
@@ -8,4 +9,5 @@ import com.it.train.po.TaotaoResult;
  */
 public interface TbContentServer {
     public EasyUIResult getTbContentList(Long categoryId,int page, int rows);
+    public TaotaoResult saveTbContent(TbContent tb);
 }

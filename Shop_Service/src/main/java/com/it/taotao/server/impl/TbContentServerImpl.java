@@ -12,6 +12,7 @@ import com.it.train.po.TaotaoResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,5 +35,14 @@ public class TbContentServerImpl implements TbContentServer {
         //返回处理结果
         EasyUIResult result = new EasyUIResult(pageInfo.getTotal(), listTbContent);
         return result;
+    }
+
+    @Override
+    public TaotaoResult saveTbContent(TbContent tbContent) {
+        Date date = new Date();
+        tbContent.setCreated(date);
+        tbContent.setUpdated(date);
+        int result = tbContentDao.saveContent(tbContent);
+        return TaotaoResult.ok(result);
     }
 }

@@ -61,4 +61,9 @@ public class TbContentDaoImpl implements TbContentDao {
         criteria.andCategoryIdEqualTo(categoryId);
         return tbContentMapper.selectByExample(tbContentExample);
     }
+
+    @Override
+    public int saveContent(TbContent tbContent) {
+        return tbContentMapper.insert(tbContent);
+    }
 }
