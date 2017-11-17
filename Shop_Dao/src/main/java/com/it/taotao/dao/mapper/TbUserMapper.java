@@ -3,6 +3,8 @@ package com.it.taotao.dao.mapper;
 import com.it.taotao.pojo.TbUser;
 import com.it.taotao.pojo.TbUserExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TbUserMapper {
@@ -27,4 +29,7 @@ public interface TbUserMapper {
     int updateByPrimaryKeySelective(TbUser record);
 
     int updateByPrimaryKey(TbUser record);
+
+    TbUser selectByHashmap(Map map);
+
 }
